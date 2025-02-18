@@ -3,10 +3,17 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :posts, only: [:index]
+      resources :users, only: [:index]
+
+      # Auth routes
+      post "login", to: "auth#login"
+      delete "logout", to: "auth#logout"
+      get "logged_in", to: "auth#logged_in"
     end
   end
   # Non-API routes
-  get "dashboard", to: "dashboard#index"
+  get "*path", to: "dashboard#index"
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

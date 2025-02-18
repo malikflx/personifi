@@ -5,6 +5,7 @@ const standardRequest = axios.create({
   withCredentials: true, // for cookies being sent with requests
   headers: {
     'Content-Type': 'application/json',
+    'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]')?.getAttribute('content'),
   },
 });
 
