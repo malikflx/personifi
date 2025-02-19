@@ -15,7 +15,7 @@ const Posts = () => {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    standardRequest.get('/api/v1/posts')
+    standardRequest.get('/posts')
       .then(response => {
         setPosts(response.data);
       })

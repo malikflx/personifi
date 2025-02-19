@@ -6,6 +6,7 @@ Rails.application.routes.draw do
       resources :users, only: [:index]
 
       # Auth routes
+      post "validate_email", to: "auth#validate_email"
       post "login", to: "auth#login"
       delete "logout", to: "auth#logout"
       get "logged_in", to: "auth#logged_in"
