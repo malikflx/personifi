@@ -25,4 +25,9 @@ class Api::V1::AuthController < ApplicationController
     reset_session
     render json: { logged_out: true }, status: :ok
   end
+
+  def validate_email
+    user = User.find_by(email: params[:email])
+    render json: { exists: user.present? }, status: :ok
+  end
 end
