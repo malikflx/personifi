@@ -2,22 +2,33 @@
   "private": true,
   "type": "module",
   "devDependencies": {
+    "@eslint/js": "^9.20.0",
+    "@typescript-eslint/eslint-plugin": "^8.24.1",
+    "@typescript-eslint/parser": "^8.24.1",
     "@vitejs/plugin-react": "^4.3.4",
+    "eslint": "^9.20.1",
+    "eslint-config-prettier": "^10.0.1",
+    "eslint-plugin-prettier": "^5.2.3",
+    "eslint-plugin-react": "^7.37.4",
+    "prettier": "^3.5.1",
     "typescript": "^5.7.3",
     "vite": "^5.4.14",
     "vite-plugin-ruby": "^5.1.1"
   },
   "scripts": {
-    "dev": "bin/vite dev"
+    "dev": "bin/vite dev",
+    "format": "prettier --write 'app/frontend/**/*.{js,jsx,ts,tsx}'",
+    "lint": "eslint 'app/frontend/**/*.{js,jsx,ts,tsx}' --fix"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
-    "@mui/icons-material": "^6.4.4",
+    "@mui/icons-material": "^6.4.5",
     "@mui/material": "^6.4.4",
     "axios": "^1.7.9",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "react-router-dom": "^7.1.5"
+    "react-router-dom": "^7.1.5",
+    "typescript-eslint": "^8.24.1"
   }
 }
