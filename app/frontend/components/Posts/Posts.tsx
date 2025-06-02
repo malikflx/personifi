@@ -10,20 +10,27 @@ interface Post {
   comments_count: number;
   shares_count: number;
 }
+
+interface StandardError {
+  status?: number;
+  message?: string;
+  originalError?: unknown;
+}
 const Posts = () => {
   const [posts, setPosts] = useState<Post[]>([]);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    standardRequest
-      .get('/posts')
-      .then((response) => {
+    const getPosts = async () => {
+      try {
+        const response = await standardRequest.get('/posts');
         setPosts(response.data);
-      })
-      .catch((error) => {
-        console.error('Error fetching posts', error);
-        setError('Failed to load posts');
-      });
+      } catch (err: unknown) {
+        const error = err as StandardError;
+        setError(error.message || 'An error occurred while fetching posts.');
+      }
+    };
+    getPosts();
   }, []);
 
   return (

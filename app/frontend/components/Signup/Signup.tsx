@@ -6,13 +6,11 @@ import {
   Alert,
   Button,
   Container,
-  IconButton,
   InputAdornment,
   Stack,
   TextField,
   Typography,
 } from '@mui/material';
-import EditIcon from '@mui/icons-material/Edit';
 
 const Signup = () => {
   const [email, setEmail] = useState('');

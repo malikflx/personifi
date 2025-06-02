@@ -9,7 +9,6 @@ import {
   Typography,
 } from '@mui/material';
 import standardRequest from '../../utils/standardRequest';
-import Logo from '../Header/Logo';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -58,7 +57,6 @@ const Login = () => {
 
   return (
     <Container>
-      <Logo />
       <Stack
         sx={{ width: '100%', height: '100vh', marginTop: '6em' }}
         alignItems={'center'}
@@ -69,7 +67,7 @@ const Login = () => {
           variant="h5"
           gutterBottom
           sx={{ fontWeight: '400' }}
-        >{`Sign in to your account`}</Typography>
+        >{`Sign into your account`}</Typography>
 
         {error && (
           <Alert severity="error" sx={{ width: '30%' }}>
@@ -82,7 +80,16 @@ const Login = () => {
           alignItems={'center'}
         >
           <Stack sx={{ width: '30%' }}>
-            <form onSubmit={handleLogin}>
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                if (!isValidEmail) {
+                  validateEmail();
+                } else {
+                  handleLogin(e);
+                }
+              }}
+            >
               <TextField
                 id="email"
                 label="Email"

@@ -8,7 +8,7 @@ class Api::V1::AuthController < ApplicationController
       session[:user_id] = user.id
       render json: { logged_in: true, user: user }, status: :ok
     else
-      render json: { error: "Invalid email or password" }, status: :unauthorized
+      render json: { error: "Invalid email or password" }, status: :unauthorized, head: :unauthorized
     end
   end
 
@@ -23,7 +23,7 @@ class Api::V1::AuthController < ApplicationController
   end
   def logout
     reset_session
-    render json: { logged_out: true }, status: :ok
+    render json: { logged_out: true, message: "Logged out successfully", csrf_token: form_authenticity_token }, status: :ok
   end
 
   def validate_email
