@@ -24,7 +24,7 @@ Post.create(
       post_url: "https://www.facebook.com",
       likes_count: 20,
       comments_count: 10,
-      shares_count: 5},
+      shares_count: 5 },
     {
       content: "This is a third test post",
       platform: "Twitter",
