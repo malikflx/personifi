@@ -1,5 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import standardRequest from '../../utils/standardRequest';
+import {
+  Alert,
+  Box,
+  Card,
+  CardContent,
+  Stack,
+  Typography,
+  Divider,
+} from '@mui/material';
 
 interface Post {
   id: number;
@@ -34,31 +43,44 @@ const Posts = () => {
   }, []);
 
   return (
-    <div>
-      <h2>Posts</h2>
-      {error && <p style={{ color: 'red' }}>{error}</p>}
-      {posts.length > 0 ? (
-        posts.map((post) => (
-          <div key={post.id}>
-            <p>
-              <strong>Content: </strong>
-              {post.content}
-            </p>
-            <p>
-              <strong>Platform: </strong>
-              {post.platform}
-            </p>
-            <p>
-              Likes: {post.likes_count} | Comments: {post.comments_count} |
-              Shares: {post.shares_count}
-            </p>
-            <hr />
-          </div>
-        ))
-      ) : (
-        <p>No posts found</p>
+    <Box sx={{ maxWidth: 600, mx: 'auto', mt: 4, p: 2 }}>
+      <Typography variant="h4" gutterBottom>
+        Posts
+      </Typography>
+
+      {error && (
+        <Alert severity="error" sx={{ mb: 2 }}>
+          {error}
+        </Alert>
       )}
-    </div>
+
+      {posts.length > 0 ? (
+        <Stack spacing={2}>
+          {posts.map((post) => (
+            <Card key={post.id} variant="outlined">
+              <CardContent>
+                <Typography variant="subtitle1" fontWeight="bold">
+                  {post.platform}
+                </Typography>
+                <Typography variant="body1" sx={{ mt: 1 }}>
+                  {post.content}
+                </Typography>
+                <Divider sx={{ my: 1 }} />
+                <Typography variant="body2" color="textSecondary">
+                  Likes: {post.likes_count} &nbsp;|&nbsp; Comments:{' '}
+                  {post.comments_count} &nbsp;|&nbsp; Shares:{' '}
+                  {post.shares_count}
+                </Typography>
+              </CardContent>
+            </Card>
+          ))}
+        </Stack>
+      ) : (
+        <Typography variant="body1" color="textSecondary">
+          {'No posts found.'}
+        </Typography>
+      )}
+    </Box>
   );
 };
 
