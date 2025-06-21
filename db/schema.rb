@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_02_17_213228) do
+ActiveRecord::Schema[8.0].define(version: 2025_06_17_050057) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -21,6 +21,17 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_17_213228) do
     t.integer "likes_count"
     t.integer "comments_count"
     t.integer "shares_count"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tweets", force: :cascade do |t|
+    t.string "tweet_id"
+    t.text "text"
+    t.datetime "posted_at"
+    t.integer "likes"
+    t.integer "retweet"
+    t.integer "replies"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

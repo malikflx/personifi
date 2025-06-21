@@ -26,6 +26,8 @@ gem "vite_rails"
 
 gem "bcrypt", "~> 3.1.7"
 
+gem "rest-client"
+
 gem "solargraph", group: :development
 
 group :development, :test do
