@@ -10,6 +10,9 @@ Rails.application.routes.draw do
       post "login", to: "auth#login"
       delete "logout", to: "auth#logout"
       get "logged_in", to: "auth#logged_in"
+
+      # Twitter routes
+      get "twitter/recent", to: "twitter#recent"
     end
   end
   # Non-API routes
